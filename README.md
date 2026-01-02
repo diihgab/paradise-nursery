@@ -1,178 +1,243 @@
 # Paradise Nursery - Shopping Cart Application
 
-## Nome do Projeto
-**Paradise Nursery - Aplicativo de Carrinho de Compras para Loja de Plantas Online**
+## Project Name
+**Paradise Nursery - Plant Shop E-commerce Application**
 
-## Descrição
-Paradise Nursery é uma aplicação web de e-commerce desenvolvida com Next.js 16 e React, permitindo aos usuários navegar, selecionar e comprar plantas de interior. O projeto implementa um carrinho de compras completo com gerenciamento de estado usando Redux Toolkit.
+## Description
+Paradise Nursery is a fully functional e-commerce web application built with React and Redux Toolkit. The application allows users to browse a curated collection of houseplants, add them to a shopping cart, and manage their orders. This project demonstrates modern React development practices, state management with Redux, and responsive UI design.
 
-## Tecnologias Utilizadas
-- **Next.js 16** - Framework React com App Router
-- **React 19.2** - Biblioteca JavaScript para interfaces de usuário
-- **Redux Toolkit** - Gerenciamento de estado global
-- **TypeScript** - Tipagem estática para JavaScript
-- **Tailwind CSS v4** - Framework CSS utility-first
-- **shadcn/ui** - Componentes de UI reutilizáveis
-- **Lucide React** - Ícones modernos
+## Technologies Used
+- **React 19.2** - JavaScript library for building user interfaces
+- **Redux Toolkit** - State management for the shopping cart
+- **React Router DOM** - Client-side routing and navigation
+- **CSS3** - Custom styling with CSS variables for theming
+- **Lucide React** - Modern icon library
 
-## Funcionalidades Principais
+## Project Structure
+```
+src/
+├── App.jsx                    # Main application component with routing
+├── App.css                    # Main styles including landing page background
+├── CartSlice.jsx              # Redux slice with cart reducers
+├── store.js                   # Redux store configuration
+├── components/
+│   ├── AboutUs.jsx           # Company information page
+│   ├── AboutUs.css           # About Us page styles
+│   ├── ProductList.jsx       # Product listing component
+│   ├── ProductList.css       # Product listing styles
+│   ├── CartItem.jsx          # Individual cart item component
+│   ├── CartItem.css          # Cart item styles
+│   ├── CartPage.jsx          # Shopping cart page
+│   └── CartPage.css          # Cart page styles
+├── data/
+│   └── plantsData.js         # Plant products data (18 unique plants)
+└── public/
+    └── [plant images]        # Product images
+```
 
-### 1. Página Inicial (App.jsx)
-- Imagem de fundo atraente representando um viveiro de plantas
-- Nome da empresa em destaque
-- Botão "Começar" que redireciona para a página de produtos
-- Design responsivo e moderno
+## Key Features
 
-### 2. Página de Listagem de Produtos (ProductList.jsx)
-- Exibição de **18 plantas únicas** organizadas em **3 categorias**:
-  - Plantas de Interior (6 plantas)
-  - Suculentas (6 plantas)
-  - Plantas Aromáticas (6 plantas)
-- Cada planta exibe:
-  - Imagem em miniatura
-  - Nome da planta
-  - Descrição detalhada
-  - Preço
-  - Botão "Adicionar ao Carrinho"
-- Botão desabilita após adicionar o produto ao carrinho
-- Navegação integrada com ícone de carrinho mostrando contagem de itens
+### 1. Landing Page (App.jsx)
+- Beautiful background image of a botanical greenhouse
+- Company name "Paradise Nursery" prominently displayed
+- "Get Started" button that navigates to the product listing
+- Responsive design with overlay for better text readability
 
-### 3. Carrinho de Compras (CartItem.jsx)
-- Lista de todos os produtos adicionados
-- Para cada item:
-  - Imagem em miniatura
-  - Nome e preço unitário
-  - Controles de quantidade (+ e -)
-  - Cálculo do custo total por item
-  - Botão de exclusão
-- Resumo do pedido:
-  - Total de itens
-  - Valor total do carrinho
-  - Botão "Finalizar Compra - Em Breve"
-- Botão "Continuar Comprando" para retornar à listagem
-- Estado vazio do carrinho com mensagem amigável
+### 2. Product Listing Page (ProductList.jsx)
+- **18 unique plants** organized into **3 categories**:
+  - Indoor Plants (6 plants)
+  - Succulents (6 plants)
+  - Aromatic Plants (6 plants)
+- Each product card displays:
+  - High-quality product image thumbnail
+  - Plant name
+  - Detailed description
+  - Price in Brazilian Reais (R$)
+  - "Add to Cart" button
+- Smart cart integration:
+  - Button disables after adding item to cart
+  - Button text changes to "Added to Cart"
+  - Navigation bar shows real-time cart item count
+
+### 3. Shopping Cart (CartItem.jsx & CartPage.jsx)
+- Complete cart functionality:
+  - Display all added products with thumbnails
+  - Show unit price and item name for each product
+  - Quantity controls (increase/decrease buttons)
+  - Calculate and display total cost per item
+  - Delete button to remove items
+  - Total cart value calculation
+  - Total items count
+- User actions:
+  - "Checkout" button (displays "Coming Soon")
+  - "Continue Shopping" button to return to products
+- Empty cart state with friendly message
 
 ### 4. Redux Store (CartSlice.jsx)
-- Gerenciamento completo do estado do carrinho:
-  - `addItem`: Adiciona produto ao carrinho
-  - `removeItem`: Remove produto do carrinho
-  - `increaseQuantity`: Aumenta quantidade de um item
-  - `decreaseQuantity`: Diminui quantidade de um item
-- Atualização dinâmica do contador do carrinho
+Implementation of three main reducer functions:
+- **addItem(state, action)** - Adds a product to the cart or increases quantity if already exists
+- **removeItem(state, action)** - Completely removes a product from the cart
+- **updateQuantity(state, action)** - Updates the quantity of a specific item
+- Additional helpers:
+  - increaseQuantity - Increment item quantity by 1
+  - decreaseQuantity - Decrement item quantity by 1 (minimum 1)
 
-### 5. Navegação
-- Barra de navegação fixa com links para:
-  - Início
-  - Plantas
-  - Sobre Nós
-  - Carrinho (com contador de itens)
-- Design consistente em todas as páginas
+### 5. Navigation
+- Sticky navigation bar with:
+  - Paradise Nursery logo/brand name
+  - Links to Plants, About Us pages
+  - Shopping cart icon with dynamic badge showing total items
+- Consistent across all pages
 
-### 6. Página Sobre Nós (AboutUs.jsx)
-- Informações sobre a empresa Paradise Nursery
-- História e missão da empresa
-- Valores e diferenciais
-- Cards informativos sobre qualidade, paixão, entrega e garantia
-- Seção de visão da empresa
+### 6. About Us Page (AboutUs.jsx)
+- Company history and mission
+- Core values presented in feature cards:
+  - Premium Quality
+  - Passion for Nature
+  - Safe Delivery
+  - Satisfaction Guarantee
+- Company vision statement
+- Responsive grid layout
 
-## Estrutura de Arquivos
+## Implementation Highlights
+
+### App.css - Background Image Implementation
+The landing page background is implemented in `App.css` using:
+```css
+.landing-page {
+  background-image: url("/lush-botanical-greenhouse-with-tropical-plants.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 ```
-paradise-nursery/
-├── app/
-│   ├── about/
-│   │   └── page.tsx          # Página Sobre Nós
-│   ├── cart/
-│   │   └── page.tsx          # Página do Carrinho
-│   ├── plants/
-│   │   └── page.tsx          # Página de Listagem de Produtos
-│   ├── globals.css           # Estilos globais e tema
-│   ├── layout.tsx            # Layout principal
-│   └── page.tsx              # Página inicial
-├── components/
-│   ├── AboutUs.jsx           # Componente Sobre Nós
-│   ├── CartItem.tsx          # Componente de item do carrinho
-│   ├── Navigation.tsx        # Barra de navegação
-│   └── ProductList.tsx       # Lista de produtos
-├── lib/
-│   ├── CartSlice.tsx         # Redux slice do carrinho
-│   ├── store.ts              # Configuração da store Redux
-│   ├── StoreProvider.tsx     # Provider Redux
-│   └── plants-data.ts        # Dados das plantas
-├── public/
-│   └── [imagens das plantas]
-└── README.md                 # Este arquivo
+With a gradient overlay for better text contrast and visual appeal.
+
+### CartSlice.jsx - Reducer Functions
+```javascript
+addItem: (state, action) => {
+  const existingItem = state.items.find((item) => item.id === action.payload.id)
+  if (existingItem) {
+    existingItem.quantity += 1
+  } else {
+    state.items.push({ ...action.payload, quantity: 1 })
+  }
+}
+
+removeItem: (state, action) => {
+  state.items = state.items.filter((item) => item.id !== action.payload)
+}
+
+updateQuantity: (state, action) => {
+  const { id, quantity } = action.payload
+  const item = state.items.find((item) => item.id === id)
+  if (item && quantity > 0) {
+    item.quantity = quantity
+  }
+}
 ```
 
-## Como Executar o Projeto
+## How to Run
 
-### Pré-requisitos
-- Node.js 18+ instalado
-- npm ou yarn
+### Prerequisites
+- Node.js 18 or higher
+- npm or yarn package manager
 
-### Instalação
-1. Clone o repositório ou baixe o código
-2. Instale as dependências:
+### Installation
+1. Clone or download the project
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-### Executar em Desenvolvimento
+### Development Mode
 ```bash
 npm run dev
 ```
-Acesse `http://localhost:3000` no navegador
+Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### Build de Produção
+### Production Build
 ```bash
 npm run build
 npm start
 ```
 
-## Requisitos Atendidos
+## Product Categories
 
-### Tarefa 1: README.md ✅
-Arquivo README.md completo com detalhes do projeto
+### Indoor Plants
+1. Monstera Deliciosa - R$ 89.90
+2. Pothos (Golden Pothos) - R$ 45.90
+3. Snake Plant (Sansevieria) - R$ 55.90
+4. Fiddle Leaf Fig - R$ 129.90
+5. ZZ Plant - R$ 68.90
+6. Calathea Ornata - R$ 75.90
 
-### Tarefa 2: AboutUs.jsx ✅
-Componente com informações detalhadas sobre a empresa
+### Succulents
+7. Echeveria Elegans - R$ 25.90
+8. Haworthia Fasciata - R$ 32.90
+9. Jade Plant - R$ 42.90
+10. Burro's Tail - R$ 38.90
+11. Aloe Vera - R$ 35.90
+12. Sempervivum Mix - R$ 29.90
 
-### Tarefa 3: App.css / globals.css ✅
-Estilos com tema personalizado em tons de verde natural
+### Aromatic Plants
+13. Italian Basil - R$ 18.90
+14. Peppermint - R$ 16.90
+15. Rosemary - R$ 22.90
+16. Lavender - R$ 28.90
+17. Thyme - R$ 19.90
+18. Sage - R$ 21.90
 
-### Tarefa 4: App.jsx / page.tsx ✅
-Página inicial com imagem de fundo e botão "Começar"
+## Design Features
+- Natural green color palette reflecting botanical theme
+- Responsive design for mobile, tablet, and desktop
+- Smooth transitions and hover effects
+- CSS custom properties for consistent theming
+- Accessible button states and interactions
 
-### Tarefa 5: CartSlice.jsx ✅
-Redux slice implementado com todas as funcionalidades do carrinho
+## Requirements Fulfilled
 
-### Tarefa 6: ProductList.jsx ✅
-- 18 plantas únicas em 3 categorias
-- Miniaturas, nomes e preços
-- Botão "Adicionar ao Carrinho" que desabilita
-- Navegação com ícone de carrinho dinâmico
-- Agrupamento por categorias
+### Question 1: README.md ✅
+Complete project documentation with all details
 
-### Tarefa 7: CartItem.jsx ✅
-- Exibição de valor total do carrinho
-- Custo total por item
-- Miniaturas, nomes e preços unitários
-- Botões de aumentar/diminuir quantidade
-- Botão de exclusão
-- Botão "Finalizar Compra - Em Breve"
-- Botão "Continuar Comprando"
+### Question 2: AboutUs.jsx ✅
+Comprehensive company information component
 
-## Design e UX
-- Paleta de cores naturais com tons de verde
-- Tipografia clara e legível
-- Interface responsiva para mobile e desktop
-- Feedback visual em todas as interações
-- Animações suaves de hover e transições
+### Question 3: App.css ✅
+Background image implementation for landing page
 
-## Autor
-Projeto desenvolvido como trabalho final do curso de desenvolvimento web
+### Question 4: App.jsx ✅
+Landing page with company name and "Get Started" button
 
-## Licença
-Este projeto é de uso educacional
-```
+### Question 5: CartSlice.jsx ✅
+Redux slice with addItem(), removeItem(), and updateQuantity() reducers
 
-```json file="" isHidden
+### Question 6: ProductList.jsx ✅
+- 18 unique plants in 3 categories
+- Product thumbnails, names, and prices
+- Add to cart button with disable functionality
+- Cart icon with item count in navigation
+- Category grouping
+
+### Question 7: CartItem.jsx ✅
+- Total cart value display
+- Individual item total calculation
+- Product thumbnails and unit prices
+- Quantity increase/decrease controls
+- Delete button for each item
+- Checkout button (Coming Soon)
+- Continue Shopping button
+
+## Future Enhancements
+- User authentication
+- Payment gateway integration
+- Order history
+- Product search and filtering
+- Wishlist functionality
+- Customer reviews and ratings
+
+## Author
+Educational project demonstrating React and Redux skills
+
+## License
+Educational use only
