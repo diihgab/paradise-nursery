@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
 import { Provider, useSelector } from "react-redux"
 import { ShoppingCart } from "lucide-react"
@@ -38,6 +39,12 @@ function Navigation() {
 
 function LandingPage() {
   const navigate = useNavigate()
+  const [showProductList, setShowProductList] = useState(false)
+
+  const handleGetStarted = () => {
+    setShowProductList(true)
+    navigate("/plants")
+  }
 
   return (
     <div className="landing-page">
@@ -48,7 +55,7 @@ function LandingPage() {
           <p className="landing-description">
             Descubra nossa seleção exclusiva de plantas de interior que transformarão seu espaço em um oásis verde
           </p>
-          <button className="get-started-button" onClick={() => navigate("/plants")}>
+          <button className="get-started-button" onClick={handleGetStarted}>
             Get Started
           </button>
         </div>

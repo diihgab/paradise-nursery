@@ -1,11 +1,12 @@
 "use client"
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { increaseQuantity, decreaseQuantity, removeItem } from "../CartSlice"
 import "./CartItem.css"
 
 function CartItem({ item }) {
   const dispatch = useDispatch()
+  const cartItems = useSelector((state) => state.cart.items)
 
   const handleIncrease = () => {
     dispatch(increaseQuantity(item.id))
@@ -20,6 +21,9 @@ function CartItem({ item }) {
   }
 
   const itemTotal = item.price * item.quantity
+
+  const totalCartAmount = cartItems.reduce((sum, cartItem) => sum + cartItem.price * cartItem.quantity, 0)
+  const totalCartItems = cartItems.reduce((sum, cartItem) => sum + cartItem.quantity, 0)
 
   return (
     <div className="cart-item">
@@ -43,11 +47,16 @@ function CartItem({ item }) {
           </div>
 
           <div className="cart-item-footer">
-            <p className="cart-item-total">R$ {itemTotal.toFixed(2)}</p>
+            <p className="cart-item-total">Subtotal: R$ {itemTotal.toFixed(2)}</p>
             <button onClick={handleRemove} className="remove-button" aria-label="Remover item">
               Remover
             </button>
           </div>
+        </div>
+
+        <div className="cart-total-info">
+          <p className="total-items-count">Total de itens no carrinho: {totalCartItems}</p>
+          <p className="total-cart-amount">Total do Carrinho: R$ {totalCartAmount.toFixed(2)}</p>
         </div>
       </div>
     </div>

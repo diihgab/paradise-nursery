@@ -118,6 +118,28 @@
   opacity: 0.9;
 }
 
+/* Adding styles for cart total information display */
+.cart-total-info {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.total-items-count {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  font-weight: 500;
+}
+
+.total-cart-amount {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
 @media (max-width: 640px) {
   .cart-item {
     flex-direction: column;
